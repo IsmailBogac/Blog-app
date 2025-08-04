@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { defaultBlogs } from "../Data";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { db } from "../Authentication/FireBase";
+import { collection, onSnapshot, query } from "firebase/firestore";
+import { db } from "../Authentication/firebase";
 
 export const BlogContext = createContext();
 
