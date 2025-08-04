@@ -3,7 +3,7 @@ import { PopUpContext } from "../Context/PopUpContext";
 import { useNavigate } from "react-router-dom";
 import { LoggedContext } from "../Context/LoggedContext";
 import { signInWithEmailAndPassword } from "firebase/auth/web-extension";
-import { auth } from "../Authentication/FireBase";
+import { auth } from "../Authentication/firebase";
 
 export default function PopUp() {
   const { setIsOpen } = useContext(PopUpContext);
