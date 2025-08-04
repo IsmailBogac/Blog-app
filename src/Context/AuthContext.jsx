@@ -2,9 +2,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoggedContext } from "./LoggedContext";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../Authentication/FireBase";
+import { auth } from "../Authentication/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../Authentication/FireBase";
+import { db } from "../Authentication/firebase";
 
 export const AuthContext = createContext();
 
