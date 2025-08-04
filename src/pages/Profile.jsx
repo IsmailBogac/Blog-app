@@ -1,8 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { collection, deleteDoc, doc, onSnapshot, query, where } from "firebase/firestore";
-import { db } from "../Authentication/FireBase";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
+import { db } from "../Authentication/firebase";
 import Storie from "../components/Storie";
 
 export default function Profile() {
@@ -23,24 +30,20 @@ export default function Profile() {
       setPost(posts);
     });
     return () => unsubscribe();
-    
-    
   }, [user]);
   async function handleDelete(id) {
-      const confirmDelete = window.confirm("Bu postu silmek istediğine emin misin?")
-      if(!confirmDelete) return;
+    const confirmDelete = window.confirm(
+      "Bu postu silmek istediğine emin misin?"
+    );
+    if (!confirmDelete) return;
 
-      try{
-        await deleteDoc(doc(db,"posts",id));
-        console.log("silindi");
-      }catch(error){
-        console.error("Silme hatası:",error);
-        
-      }
-    
+    try {
+      await deleteDoc(doc(db, "posts", id));
+      console.log("silindi");
+    } catch (error) {
+      console.error("Silme hatası:", error);
     }
-
-
+  }
 
   return (
     <>
@@ -52,7 +55,7 @@ export default function Profile() {
               <span className="text-primary">{userData?.name}</span>
             </h4>
 
-            <button
+            <button className="btn btn-danger logout"
               onClick={() => {
                 handleLogout();
                 navigate("/");
@@ -66,15 +69,28 @@ export default function Profile() {
         )}
 
         <div className="container w-75 dashboard my-5">
-          <h4>Your Storie's</h4>
-          {post.map((p) => (
-            <div className="storie-container mx-1   p-3 my-3" style={{backgroundColor:"#f1f1f1"}}>
-
-                          <Storie blog={p} />
-                        <button className="btn btn-danger" onClick={() => handleDelete(p.id)}>delete</button>
-            </div>
+          {post && post.length > 0 ? (
+            <>
+              <h4>Your Storie's</h4>
+              {post.map((p) => (
+                <div
+                  className="storie-container mx-1   p-3 my-3"
+                  style={{ backgroundColor: "#f1f1f1" }}
+                >
+                  <Storie blog={p} />
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(p.id)}
+                  >
+                    delete
+                  </button>
+                </div>
+              ))}
+            </>
+          ) : (
+            <h5>Do you think <span className="text-primary pointer" onClick={() => navigate('/write')}>write</span> a storie</h5>
             
-          ))}
+          )}
         </div>
       </div>
     </>

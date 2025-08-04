@@ -116,7 +116,15 @@ body {
   background-color: #212529;
   transition: .3s ease-in-out;
 }
+.logout{
+  position: absolute;
+  top: 17%;
+  right: 10%;
+}
 
+.dashboard{
+  position: absolute;
+}
 .footer{
    position: sticky;
    left: 0;

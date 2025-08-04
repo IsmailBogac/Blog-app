@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useRef } from "react";
-import { auth, db } from "../Authentication/FireBase";
+import { auth, db } from "../Authentication/firebase";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
 export default function SignUp() {
