@@ -10,6 +10,7 @@ import { InputDataContext } from "../Context/InputDataContext";
 
 export default function PreviewPage() {
   const [category, setCategory] = useState("");
+  const [summary, setSummary] = useState("");
   const { inputData, setInputData } = useContext(InputDataContext);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -28,11 +29,19 @@ export default function PreviewPage() {
         title: inputData.title,
         content: inputData.content,
         category: category,
+        summary: summary,
         img: imgURL,
         uid: user.uid,
         createdAt: serverTimestamp(),
       });
       console.log("Yüklenen URL:", imgURL);
+
+      setInputData({
+        title: "",
+        content: "",
+        category: "",
+        img: null,
+      });
     } else {
       console.warn("Dosya File nesnesi değil!", inputData.img);
     }
@@ -67,12 +76,22 @@ export default function PreviewPage() {
               <br />
               <input
                 type="text"
-                className="form-input"
+                className="form-input my-2"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+              />{" "}
+              <br />
+              <label>
+                <h5>Get Summary:</h5>
+              </label>
+              <br />
+              <input
+                type="text"
+                className="form-input my-3"
+                value={summary}
+                onChange={(e) => setSummary(e.target.value)}
               />
               <br />
-
               <div className="buttons my-5 ">
                 <button onClick={handleSave} className="btn btn-success ">
                   Save

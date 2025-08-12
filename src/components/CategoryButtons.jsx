@@ -7,7 +7,7 @@ export default function CategoryButtons() {
       <div className="container my-4 mx-2">
         {categories.map((category, index) => (
           <button
-            className={`btn  ${
+            className={`btn mx-1  ${
               selectedCategory === category
                 ? "active btn-primary"
                 : "btn-outline-primary"

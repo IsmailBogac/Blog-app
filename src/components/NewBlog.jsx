@@ -58,7 +58,6 @@ export default function NewBlog() {
           Publish
         </button>
       </div>
-      {/* <PreviewPage inputData={inputData} /> */}
     </>
   );
 }

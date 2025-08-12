@@ -2,7 +2,6 @@ body {
   padding-bottom: 60px;
 }
 
-
 .pointer {
   cursor: pointer;
 }
@@ -114,25 +113,28 @@ body {
 .our-buttons button:hover {
   color: #fff;
   background-color: #212529;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
-.logout{
+.logout {
   position: absolute;
   top: 17%;
   right: 10%;
 }
 
-.dashboard{
+.dashboard {
   position: absolute;
 }
-.footer{
-   position: sticky;
-   left: 0;
-   bottom: 0;
-   width: 100%;
+
+.userName {
+  position: absolute;
+  top: 75%;
 }
-
-
+.footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
 
 @media (max-width: 768px) {
   .hero-title {
